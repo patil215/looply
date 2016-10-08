@@ -8,6 +8,7 @@
 
 import Cocoa
 import AudioKit
+import AudioToolbox
 
 class ViewController: NSViewController {
     
@@ -38,6 +39,17 @@ class ViewController: NSViewController {
         print("hi")
         print(tracker?.amplitude)
     }
+    
+    func getDeviceVolume() {
+        var deviceID = AudioDeviceID(0)
+        var deviceIDSize = UInt32(sizeofValue(deviceID))
+        var devicePropertyAddress = AudioObjectPropertyAddress(mSelectof)
+    }
+    
+    func getVolume() {
+        
+    }
+    
 
     override var representedObject: Any? {
         didSet {
