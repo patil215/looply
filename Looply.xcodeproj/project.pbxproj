@@ -13,6 +13,8 @@
 		7C2108661DA996B3005C38B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2108641DA996B3005C38B4 /* Main.storyboard */; };
 		7C2108711DA996B4005C38B4 /* LooplyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2108701DA996B4005C38B4 /* LooplyTests.swift */; };
 		7C21087C1DA996B4005C38B4 /* LooplyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C21087B1DA996B4005C38B4 /* LooplyUITests.swift */; };
+		7CC2085A1DA9994A00A3057A /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; };
+		7CC2085B1DA9994A00A3057A /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7CC2085C1DA9994A00A3057A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CC2085B1DA9994A00A3057A /* AudioKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7C21085B1DA996B3005C38B4 /* Looply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Looply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C21085E1DA996B3005C38B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +61,7 @@
 		7C2108771DA996B4005C38B4 /* LooplyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LooplyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C21087B1DA996B4005C38B4 /* LooplyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LooplyUITests.swift; sourceTree = "<group>"; };
 		7C21087D1DA996B4005C38B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC208591DA9994A00A3057A /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC2085A1DA9994A00A3057A /* AudioKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +93,7 @@
 		7C2108521DA996B3005C38B4 = {
 			isa = PBXGroup;
 			children = (
+				7CC208591DA9994A00A3057A /* AudioKit.framework */,
 				7C21085D1DA996B3005C38B4 /* Looply */,
 				7C21086F1DA996B4005C38B4 /* LooplyTests */,
 				7C21087A1DA996B4005C38B4 /* LooplyUITests */,
@@ -132,6 +151,7 @@
 				7C2108571DA996B3005C38B4 /* Sources */,
 				7C2108581DA996B3005C38B4 /* Frameworks */,
 				7C2108591DA996B3005C38B4 /* Resources */,
+				7CC2085C1DA9994A00A3057A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -398,6 +418,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Looply/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.asdarandpatil.Looply;
@@ -411,6 +435,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Looply/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.asdarandpatil.Looply;
@@ -496,6 +524,7 @@
 				7C2108821DA996B4005C38B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C2108831DA996B4005C38B4 /* Build configuration list for PBXNativeTarget "LooplyTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +533,7 @@
 				7C2108851DA996B4005C38B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C2108861DA996B4005C38B4 /* Build configuration list for PBXNativeTarget "LooplyUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +542,7 @@
 				7C2108881DA996B4005C38B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
