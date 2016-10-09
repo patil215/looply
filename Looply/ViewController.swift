@@ -10,13 +10,18 @@ import Cocoa
 
 class ViewController: NSViewController {
     
+
+    @IBOutlet weak var lowerOutputBound: NSTextField!
+    @IBOutlet weak var upperOutputBound: NSTextField!
+    @IBOutlet weak var scaleFactor: NSTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let s : Service = Service()
-        s.start()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear() {
+        let s : Service = Service()
+//        s.start()
+
     }
     
 
@@ -26,6 +31,16 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func onLowerOutputBoundChange(_ sender: AnyObject) {
+        UserDefaults.standard.set(lowerOutputBound.doubleValue , forKey: "lowerOutputBound")
+    }
+    
+    @IBAction func onupperOutputBoundChange(_ sender: AnyObject) {
+        UserDefaults.standard.set(upperOutputBound.doubleValue , forKey: "upperOutputBound")
+        print(UserDefaults.standard.object(forKey: "upperOutputBound"))
+    }
+    
+    @IBAction func onScaleFactorChange(_ sender: AnyObject) {
+        UserDefaults.standard.set(scaleFactor.doubleValue , forKey: "scaleFactor")
+    }
 }
-
