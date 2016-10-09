@@ -18,6 +18,7 @@
 		7C6AA36E1DAA329C008D9D0C /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AA36C1DAA329C008D9D0C /* PreferencesWindow.xib */; };
 		7CC2085A1DA9994A00A3057A /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; };
 		7CC2085B1DA9994A00A3057A /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D924AB2E1DAA3D9C00D50769 /* Stirling.wav in Resources */ = {isa = PBXBuildFile; fileRef = D924AB2D1DAA3D9C00D50769 /* Stirling.wav */; };
 		D9FD38741DA9F05E00B639D9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD38731DA9F05E00B639D9 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		7C6AA36B1DAA329C008D9D0C /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		7C6AA36C1DAA329C008D9D0C /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		7CC208591DA9994A00A3057A /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		D924AB2D1DAA3D9C00D50769 /* Stirling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Stirling.wav; sourceTree = "<group>"; };
 		D9FD38731DA9F05E00B639D9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		7C21085D1DA996B3005C38B4 /* Looply */ = {
 			isa = PBXGroup;
 			children = (
+				D924AB2D1DAA3D9C00D50769 /* Stirling.wav */,
 				7C6AA36B1DAA329C008D9D0C /* PreferencesWindow.swift */,
 				7C6AA36C1DAA329C008D9D0C /* PreferencesWindow.xib */,
 				7C21085E1DA996B3005C38B4 /* AppDelegate.swift */,
@@ -261,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D924AB2E1DAA3D9C00D50769 /* Stirling.wav in Resources */,
 				7C2108631DA996B3005C38B4 /* Assets.xcassets in Resources */,
 				7C6AA36E1DAA329C008D9D0C /* PreferencesWindow.xib in Resources */,
 				7C2108661DA996B3005C38B4 /* Main.storyboard in Resources */,
