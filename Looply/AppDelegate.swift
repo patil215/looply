@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem : NSStatusItem = NSStatusItem()
     var menu: NSMenu = NSMenu()
     var menuItem : NSMenuItem = NSMenuItem()
+    var preferenceView: PreferencesWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         //Add statusBarItem
@@ -33,7 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     func openPreferences(){
-        
+        preferenceView = PreferencesWindow()
+        preferenceView.showWindow(nil)
     }
 
 }
