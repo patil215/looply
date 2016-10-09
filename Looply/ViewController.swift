@@ -19,8 +19,9 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lowerOutputBound.doubleValue = storage.getMinPoint()[1]
-        upperOutputBound.doubleValue = storage.getMaxPoint()[1]
+        //lowerOutputBound.doubleValue = storage.getMinPoint()[1]
+        //upperOutputBound.doubleValue = storage.getMaxPoint()[1]
+        //scaleFactor.doubleValue = storage.getScaleFactor()
     }
     override func viewDidAppear() {
         var s : Service = Service()
@@ -34,7 +35,7 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func onLowerOutputBoundChange(_ sender: AnyObject) {
+    /*@IBAction func onLowerOutputBoundChange(_ sender: AnyObject) {
         storage.setMinPoint(minPoint: [0, lowerOutputBound.doubleValue])
     }
     
@@ -44,5 +45,5 @@ class ViewController: NSViewController {
     
     @IBAction func onScaleFactorChange(_ sender: AnyObject) {
         storage.setScaleFactor(scaleFactor: scaleFactor.doubleValue)
-    }
+    }*/
 }

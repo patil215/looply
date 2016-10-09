@@ -12,7 +12,6 @@ import AudioToolbox
 
 class Service {
     
-    // TODO Run in background
     // TODO Make the things sliders
     // TODO Nicer UI and first time setup experience
     // TODO must prompt user to remove ambient noise detection? (or turn this flag off)
