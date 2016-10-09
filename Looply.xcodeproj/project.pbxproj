@@ -14,6 +14,7 @@
 		7C2108661DA996B3005C38B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2108641DA996B3005C38B4 /* Main.storyboard */; };
 		7C2108711DA996B4005C38B4 /* LooplyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2108701DA996B4005C38B4 /* LooplyTests.swift */; };
 		7C21087C1DA996B4005C38B4 /* LooplyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C21087B1DA996B4005C38B4 /* LooplyUITests.swift */; };
+		7C3A9ACA1DA9EDFB006A4393 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A9AC91DA9EDFB006A4393 /* WindowController.swift */; };
 		7CC2085A1DA9994A00A3057A /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; };
 		7CC2085B1DA9994A00A3057A /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC208591DA9994A00A3057A /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		7C2108771DA996B4005C38B4 /* LooplyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LooplyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C21087B1DA996B4005C38B4 /* LooplyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LooplyUITests.swift; sourceTree = "<group>"; };
 		7C21087D1DA996B4005C38B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C3A9AC91DA9EDFB006A4393 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		7CC208591DA9994A00A3057A /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				7C2108641DA996B3005C38B4 /* Main.storyboard */,
 				7C2108671DA996B3005C38B4 /* Info.plist */,
 				7C09BEA21DA9DED000F0CA8F /* Service.swift */,
+				7C3A9AC91DA9EDFB006A4393 /* WindowController.swift */,
 			);
 			path = Looply;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C2108611DA996B3005C38B4 /* ViewController.swift in Sources */,
+				7C3A9ACA1DA9EDFB006A4393 /* WindowController.swift in Sources */,
 				7C21085F1DA996B3005C38B4 /* AppDelegate.swift in Sources */,
 				7C09BEA31DA9DED000F0CA8F /* Service.swift in Sources */,
 			);

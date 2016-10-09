@@ -11,16 +11,30 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    var statusBar = NSStatusBar.system()
+    var statusBarItem : NSStatusItem = NSStatusItem()
+    var menu: NSMenu = NSMenu()
+    var menuItem : NSMenuItem = NSMenuItem()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        //Add statusBarItem
+        statusBarItem = statusBar.statusItem(withLength: -1)
+        statusBarItem.menu = menu
+        statusBarItem.title = "Looply"
+        
+        //Add menuItem to menu
+        menuItem.title = "Preferences..."
+        menuItem.action = #selector(AppDelegate.openPreferences)
+        menuItem.keyEquivalent = ""
+        menu.addItem(menuItem)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    func openPreferences(){
+        
+    }
 
 }
 
