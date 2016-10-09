@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F03223A5571DBE3A436F4A7E8A0FCC9721C5D6CF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FAC2AECA13D6386AFC141433B1C0207860A7C67A" : 9223372036854775807,
+    "F03223A5571DBE3A436F4A7E8A0FCC9721C5D6CF" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "98332197-9942-4237-B36F-B14C83193D2D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FAC2AECA13D6386AFC141433B1C0207860A7C67A" : "Looply\/EERegression\/",
+    "F03223A5571DBE3A436F4A7E8A0FCC9721C5D6CF" : "Looply\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Looply",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Looply.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:patil215\/mhacks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F03223A5571DBE3A436F4A7E8A0FCC9721C5D6CF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erkekin\/EERegression.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FAC2AECA13D6386AFC141433B1C0207860A7C67A"
+    }
+  ]
+}
