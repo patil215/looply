@@ -34,7 +34,7 @@ class Service {
     let WINDOW_LENGTH_SECONDS : UInt32 = 5
     var SAMPLE_RATE : UInt32 = 0
     var WINDOW_LENGTH : UInt32 = 0
-    let WAIT_LENGTH_SECONDS : UInt32 = 5
+    let WAIT_LENGTH_SECONDS : UInt32 = 1
     var WAIT_LENGTH : UInt32 = 0
     
     func generateQuadraticCoefficients(xs : [Double], ys : [Double]) -> [Double] {
@@ -173,9 +173,28 @@ class Service {
             &volume)
     }
     
+    func incrementTowardsVolume(currentVolume : Double, targetVolume : Double) {
+        var newVolume = (currentVolume + ((targetVolume - currentVolume) / 5))
+        updateVolume(amplitude: newVolume)
+        storage?.setLastVolumeSetting(volume: newVolume)
+    }
+    
     init() {
         let thread = Thread(target: self, selector: #selector(start), object: nil)
         thread.start()
+        
+        let volumeChangeThread = Thread(target: self, selector: #selector(changeVolume), object: nil)
+        volumeChangeThread.start()
+    }
+    
+    @objc func changeVolume() {
+        while(true) {
+            let currentVolume = getCurrentVolume()
+            storage = Storage()
+            let lastVolumeSetting = storage?.getLastVolumeSetting()
+            incrementTowardsVolume(currentVolume: currentVolume, targetVolume: lastVolumeSetting!)
+            usleep(UInt32(Double(MICROSECONDS_IN_SECOND) * 0.15))
+        }
     }
 
     @objc func start() {
@@ -219,22 +238,17 @@ class Service {
             
             let epsilon = 0.01
             let lastVolumeSetting = storage?.getLastVolumeSetting()
-            print(lastVolumeSetting)
             let currentVolume = getCurrentVolume()
-            print(currentVolume)
             
             if !(abs(lastVolumeSetting! - currentVolume) < epsilon) {
-                print("dibber")
-                print(getCurrentVolume())
                 usleep(WAIT_LENGTH)
                 storage?.setLastUserSetPoint(userPoint: [getVolumeAverage(tracker: tracker!), getCurrentVolume()])
                 storage?.setLastVolumeSetting(volume: getCurrentVolume())
                 continue
             }
             
-            updateVolume(amplitude: volume)
+            //updateVolume(amplitude: volume)
             storage?.setLastVolumeSetting(volume: volume)
-            // usleep(WAIT_LENGTH)
         }
 
         
