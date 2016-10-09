@@ -11,7 +11,14 @@ import AudioKit
 import AudioToolbox
 
 class Service {
+    
+    // TODO Run in background
+    // TODO Make the things sliders
+    // TODO smooth volume adjustment
+    // TODO Nicer UI and first time setup experience
     // TODO must prompt user to remove ambient noise detection? (or turn this flag off)
+    // TODO Doing it by device
+    // TODO Cancelling out positive feedback for speakers, or prompting user to not use them
     
     var mic : AKMicrophone? = nil
     var tracker : AKFrequencyTracker? = nil
@@ -35,9 +42,7 @@ class Service {
     func generateQuadraticCoefficients(xs : [Double], ys : [Double]) -> [Double] {
         let a : Double = ys[0]/((xs[0]-xs[1])*(xs[0]-xs[2])) + ys[1]/((xs[1]-xs[0])*(xs[1]-xs[2])) + ys[2]/((xs[2]-xs[0])*(xs[2]-xs[1]))
         
-        let b : Double = -ys[0]*(xs[1]+xs[2])/((xs[0]-xs[1])*(xs[0]-xs[2]))
-        -ys[1]*(xs[0]+xs[2])/((xs[1]-xs[0])*(xs[1]-xs[2]))
-        -ys[2]*(xs[0]+xs[1])/((xs[2]-xs[0])*(xs[2]-xs[1]))
+        let b : Double = -ys[0]*(xs[1]+xs[2])/((xs[0]-xs[1])*(xs[0]-xs[2])) - ys[1]*(xs[0]+xs[2])/((xs[1]-xs[0])*(xs[1]-xs[2])) - ys[2]*(xs[0]+xs[1])/((xs[2]-xs[0])*(xs[2]-xs[1]))
         
         let c : Double = ys[0]*xs[1]*xs[2]/((xs[0]-xs[1])*(xs[0]-xs[2]))
             + ys[1]*xs[0]*xs[2]/((xs[1]-xs[0])*(xs[1]-xs[2]))
@@ -123,9 +128,15 @@ class Service {
             return -1
         }
         
+        var volumePropertyAddress = AudioObjectPropertyAddress(
+            mSelector: AudioObjectPropertySelector(kAudioHardwareServiceDeviceProperty_VirtualMasterVolume),
+            mScope: AudioObjectPropertyScope(kAudioDevicePropertyScopeOutput),
+            mElement: AudioObjectPropertyElement(kAudioObjectPropertyElementMaster))
+        
         var volume : Float32 = 0.5
         var volumeSize = UInt32(MemoryLayout.size(ofValue: volume))
-        let result = AudioHardwareServiceGetPropertyData(defaultOutputDeviceID, &getDefaultOutputDevicePropertyAddress, 0, nil, &volumeSize, &volume)
+        let result = AudioHardwareServiceGetPropertyData(defaultOutputDeviceID, &volumePropertyAddress, 0, nil, &volumeSize, &volume)
+        
         
         return Double(volume)
     }
@@ -163,8 +174,13 @@ class Service {
             volumeSize,
             &volume)
     }
+    
+    init() {
+        let thread = Thread(target: self, selector: #selector(start), object: nil)
+        thread.start()
+    }
 
-    func start() {
+    @objc func start() {
         mic = AKMicrophone()
         tracker = AKFrequencyTracker.init(mic!)
         silence = AKBooster(tracker!,gain : 0)
@@ -178,16 +194,7 @@ class Service {
         AudioKit.start()
         
         while(true) {
-            let lastVolumeSetting = storage?.getLastVolumeSetting()
-            let currentVolume = getCurrentVolume()
-            let epsilon = 0.01
             
-            if !(lastVolumeSetting! - currentVolume < epsilon || currentVolume - lastVolumeSetting! < epsilon) {
-                usleep(WAIT_LENGTH)
-                storage?.setLastUserSetPoint(userPoint: [getVolumeAverage(tracker: tracker!), getCurrentVolume()])
-                storage?.setLastVolumeSetting(volume: getCurrentVolume())
-                continue
-            }
             
             let lastPoint = storage?.getLastUserSetPoint()
             let minPoint = storage?.getMinPoint()
@@ -211,8 +218,25 @@ class Service {
             }
             
             let volume = getVolumeLevel(coefficients: coefficients!, x: average, minVolume: (minPoint?[1])!, maxVolume: (maxPoint?[1])!)
+            
+            let epsilon = 0.01
+            let lastVolumeSetting = storage?.getLastVolumeSetting()
+            print(lastVolumeSetting)
+            let currentVolume = getCurrentVolume()
+            print(currentVolume)
+            
+            if !(abs(lastVolumeSetting! - currentVolume) < epsilon) {
+                print("dibber")
+                print(getCurrentVolume())
+                usleep(WAIT_LENGTH)
+                storage?.setLastUserSetPoint(userPoint: [getVolumeAverage(tracker: tracker!), getCurrentVolume()])
+                storage?.setLastVolumeSetting(volume: getCurrentVolume())
+                continue
+            }
+            
             updateVolume(amplitude: volume)
             storage?.setLastVolumeSetting(volume: volume)
+            // usleep(WAIT_LENGTH)
         }
 
         

@@ -14,14 +14,17 @@ class ViewController: NSViewController {
     @IBOutlet weak var lowerOutputBound: NSTextField!
     @IBOutlet weak var upperOutputBound: NSTextField!
     @IBOutlet weak var scaleFactor: NSTextField!
+    
+    var storage : Storage = Storage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        lowerOutputBound.doubleValue = storage.getMinPoint()[1]
+        upperOutputBound.doubleValue = storage.getMaxPoint()[1]
     }
     override func viewDidAppear() {
-        let s : Service = Service()
-//        s.start()
-
+        var s : Service = Service()
+        
     }
     
 
@@ -32,15 +35,14 @@ class ViewController: NSViewController {
     }
 
     @IBAction func onLowerOutputBoundChange(_ sender: AnyObject) {
-        UserDefaults.standard.set(lowerOutputBound.doubleValue , forKey: "lowerOutputBound")
+        storage.setMinPoint(minPoint: [0, lowerOutputBound.doubleValue])
     }
     
     @IBAction func onupperOutputBoundChange(_ sender: AnyObject) {
-        UserDefaults.standard.set(upperOutputBound.doubleValue , forKey: "upperOutputBound")
-        print(UserDefaults.standard.object(forKey: "upperOutputBound"))
+        storage.setMaxPoint(maxPoint: [0.75, upperOutputBound.doubleValue])
     }
     
     @IBAction func onScaleFactorChange(_ sender: AnyObject) {
-        UserDefaults.standard.set(scaleFactor.doubleValue , forKey: "scaleFactor")
+        storage.setScaleFactor(scaleFactor: scaleFactor.doubleValue)
     }
 }

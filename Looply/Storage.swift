@@ -44,6 +44,14 @@ class Storage {
         defaults.set(volume, forKey: "volume")
     }
     
+    func setScaleFactor(scaleFactor : Double) {
+        defaults.set(scaleFactor, forKey: "scaleFactor")
+    }
+    
+    func getScaleFactor() -> Double {
+        return defaults.double(forKey: "scaleFactor")
+    }
+    
     private func writePoint(point: [Double], prefix: String) {
         defaults.set(point[0], forKey: prefix + "Background")
         defaults.set(point[1], forKey: prefix + "Volume")
